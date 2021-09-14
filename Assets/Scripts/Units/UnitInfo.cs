@@ -13,10 +13,36 @@ namespace Units
         private string id;
 
         [SerializeField] private string unitName;
-        [SerializeField] private List<UnitAttribute> attributes;
-        [SerializeField] private List<SkillInfo> skills;
-        [SerializeField] private UnitGraphicsInfo unitGraphicsInfo;
+        [SerializeField] private List<AttributeData> attributes;
+        [SerializeField] private List<SkillData> skills;
+        [SerializeField] private List<PartsData> parts;
+        [SerializeField] private UnitStats stats;
+    }
 
 
+    //Unserialize when database works
+    [System.Serializable]
+    public struct PartsData
+    {
+        [SerializeField] private string partSlotID;
+        [SerializeField] private string partID;
+
+        public string PartSlotID => partSlotID;
+        public string PartID => partID;
+    }
+    
+
+    [System.Serializable]
+
+    public struct AttributeData
+    {
+        [SerializeField] private string id;
+        public string ID => id;
+    }
+    [System.Serializable]
+    public struct SkillData
+    {
+        [SerializeField] private string id;
+        public string ID => id;
     }
 }

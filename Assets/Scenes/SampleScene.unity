@@ -631,6 +631,18 @@ PrefabInstance:
       propertyPath: activeAction
       value: 
       objectReference: {fileID: 7400000, guid: cf485d01ef6149b41a32c0930fedbb16, type: 2}
+    - target: {fileID: -6090931756851035220, guid: ccdb707f63afa754ca6dfbba09b30720, type: 3}
+      propertyPath: skillActions.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -6090931756851035220, guid: ccdb707f63afa754ca6dfbba09b30720, type: 3}
+      propertyPath: skillActions.Array.data[0].action
+      value: 
+      objectReference: {fileID: 7400000, guid: cf485d01ef6149b41a32c0930fedbb16, type: 2}
+    - target: {fileID: -6090931756851035220, guid: ccdb707f63afa754ca6dfbba09b30720, type: 3}
+      propertyPath: skillActions.Array.data[0].skillEvent
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2016235052741074189, guid: ccdb707f63afa754ca6dfbba09b30720, type: 3}
       propertyPath: m_RootOrder
       value: 0

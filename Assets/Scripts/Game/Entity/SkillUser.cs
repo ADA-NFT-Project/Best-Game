@@ -52,7 +52,7 @@ namespace Game.Entity
         {
             foreach (Skill s in skills)
             {
-                s.UseOnSpawnAction();
+                s.UseSkillEventAction(SkillEvent.Spawn);
             }
         }
 
@@ -61,7 +61,7 @@ namespace Game.Entity
             if (d <= 0) return;
             foreach (Skill s in skills)
             {
-                s.UseOnGetHitAction(d);
+                s.UseSkillEventAction(SkillEvent.Gethit);
             }
         }
 
@@ -69,13 +69,13 @@ namespace Game.Entity
         {
             foreach (Skill s in skills)
             {
-                s.UseOnDieAction();
+                s.UseSkillEventAction(SkillEvent.Die);
             }
         }
 
         public void UseSkill(int order)
         {
-            skills[order].UseSkill();
+            skills[order].UseSkillEventAction(SkillEvent.Activate);
         }
 
         public void SkillEffect(string input)

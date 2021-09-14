@@ -6,17 +6,28 @@ using UnityEngine;
 
 namespace Game
 {
+    public enum SkillEvent
+    {
+        Spawn, Activate, Gethit, Hitother, Die
+    }
+    
     public abstract class Skill : MonoBehaviour
     {
-        [SerializeField] private string skillName;
+        [Serializable]
+        struct EventClipPair
+        {
+            [SerializeField] private SkillEvent skillEvent;
+            [SerializeField] private AnimationClip action;
 
-        [SerializeField] private AnimationClip spawnAction;
-        [SerializeField] private AnimationClip activeAction;
-        [SerializeField] private AnimationClip getHitAction;
-        [SerializeField] private AnimationClip hitOtherAction;
-        [SerializeField] private AnimationClip onDieAction;
+            public SkillEvent SkillEvent => skillEvent;
+            public AnimationClip Action => action;
+        }
         
+        [SerializeField] private string skillName;
+        [SerializeField] private List<EventClipPair> skillActions;
 
+
+        private Dictionary<SkillEvent, AnimationClip> event2clip;
         [HideInInspector] public SkillUser user;
 
         private Dictionary<int, Action> getEffect;
@@ -27,32 +38,18 @@ namespace Game
         private void Awake()
         {
             getEffect = new Dictionary<int, Action>();
+            event2clip = new Dictionary<SkillEvent, AnimationClip>();
+            foreach (EventClipPair ecp in skillActions)
+            {
+                event2clip[ecp.SkillEvent] = ecp.Action;
+            }
+            
         }
 
-        public virtual void UseOnSpawnAction()
+        public void UseSkillEventAction(SkillEvent skillEvent)
         {
-            user.StartSkillAnimation(spawnAction);
-        }
-
-        public virtual void UseSkill()
-        {
-            user.StartSkillAnimation(activeAction);
-        }
-
-        public virtual void UseOnGetHitAction(int d)
-        {
-            if (d <= 0) return;
-            user.StartSkillAnimation(getHitAction);
-        }
-
-        public virtual void UseOnHitOtherAction(UnitEntity other)
-        {
-            user.StartSkillAnimation(hitOtherAction);
-        }
-
-        public virtual void UseOnDieAction()
-        {
-            user.StartSkillAnimation(onDieAction);
+            if (!event2clip.ContainsKey(skillEvent)) return;
+            user.StartSkillAnimation(event2clip[skillEvent]);
         }
 
         public void ActivateSkillEffect(int effect)

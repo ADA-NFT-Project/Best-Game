@@ -15,7 +15,7 @@ namespace Game.Skills
 
         public void Heal()
         {
-            user.Life.TakeDamage(-toHeal);
+            user.Entity.Life.TakeDamage(-toHeal);
         }
     }
 }

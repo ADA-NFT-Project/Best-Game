@@ -22,6 +22,10 @@ namespace Game.Entity
         private void Awake()
         {
             entity = GetComponent<UnitEntity>();
+            foreach (Skill s in skills)
+            {
+                s.user = this;
+            }
         }
 
         private void OnEnable()
@@ -42,17 +46,6 @@ namespace Game.Entity
         {
             animationOverride = new AnimatorOverrideController(Entity.animator.runtimeAnimatorController);
             Entity.animator.runtimeAnimatorController = animationOverride;
-
-            for (int i = 0; i < skills.Count; i++)
-            {
-                skills[i].user = Entity;
-                for (int j = 0; j < skills[i].Animations.Count; j++)
-                {
-                    if (skills[i].Animations[j] == null) continue;
-                    print(Skill.SkillToAnimation(skills[i], j));
-                    animationOverride[Skill.SkillToAnimation(skills[i], j)] = skills[i].Animations[j];
-                }
-            }
         }
 
         private void UseOnSpawnSkills(UnitEntity le)
@@ -96,6 +89,12 @@ namespace Game.Entity
                 if(String.Equals(s.SkillName, skill, StringComparison.CurrentCultureIgnoreCase))
                     s.ActivateSkillEffect(effect);
             }
+        }
+
+        public void StartSkillAnimation(AnimationClip clip)
+        {
+            animationOverride["Skill"] = clip;
+            Entity.animator.Play("Skill");
         }
     }
 }

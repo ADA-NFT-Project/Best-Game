@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Game.Entity
@@ -43,12 +45,11 @@ namespace Game.Entity
         {
             isAlive = true;
             entity = GetComponent<UnitEntity>();
-
         }
 
         private void OnEnable()
         {
-            OnSpawn?.Invoke(this);
+            StartCoroutine(SpawnAfterOneFrame());
         }
 
         public void TakeDamage(int d)
@@ -60,6 +61,12 @@ namespace Game.Entity
                 isAlive = false;
                 OnDie?.Invoke(this);
             }
+        }
+
+        IEnumerator SpawnAfterOneFrame()
+        {
+            yield return null;
+            OnSpawn?.Invoke(this);
         }
         
     }

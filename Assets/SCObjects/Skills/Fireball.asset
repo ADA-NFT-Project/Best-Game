@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da1a37b1a8220964da7f188f4f8b3ed2, type: 3}
+  m_Name: Fireball
+  m_EditorClassIdentifier: 
+  id: d52f40c0ab26d364fad570a9ecdf972e
+  skillName: Fire
+  description: Fire!
+  rarity: 0
+  sprite: {fileID: 0}
+  skillPrefab: {fileID: -6090931756851035220, guid: ccdb707f63afa754ca6dfbba09b30720, type: 3}

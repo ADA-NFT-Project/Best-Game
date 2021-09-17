@@ -22,10 +22,6 @@ namespace Game.Entity
         private void Awake()
         {
             entity = GetComponent<UnitEntity>();
-            foreach (Skill s in skills)
-            {
-                s.user = this;
-            }
         }
 
         private void OnEnable()
@@ -46,6 +42,10 @@ namespace Game.Entity
         {
             animationOverride = new AnimatorOverrideController(Entity.animator.runtimeAnimatorController);
             Entity.animator.runtimeAnimatorController = animationOverride;
+            foreach (Skill s in skills)
+            {
+                s.user = this;
+            }
         }
 
         private void UseOnSpawnSkills(UnitEntity le)

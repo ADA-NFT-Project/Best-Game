@@ -7,13 +7,11 @@ using UnityEngine;
 namespace Units
 {
     [CreateAssetMenu(menuName = "Units/Unit", fileName = "New Unit")]
-    public class UnitInfo : ScriptableObject
+    public class UnitInfo : IdScobject
     {
-        [Tooltip("should assign automatically")] [SerializeField]
-        private string id;
 
         [SerializeField] private string unitName;
-        [SerializeField] private List<AttributeData> attributes;
+        [SerializeField] private SpeciesData species;
         [SerializeField] private List<SkillData> skills;
         [SerializeField] private List<PartsData> parts;
         [SerializeField] private UnitStats stats;
@@ -34,7 +32,7 @@ namespace Units
 
     [System.Serializable]
 
-    public struct AttributeData
+    public struct SpeciesData
     {
         [SerializeField] private string id;
         public string ID => id;

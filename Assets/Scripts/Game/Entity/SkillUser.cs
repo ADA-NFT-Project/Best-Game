@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Game;
 using UnityEngine;
+using Game.Skills;
 
 namespace Game.Entity
 {

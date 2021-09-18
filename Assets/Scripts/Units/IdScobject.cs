@@ -30,6 +30,17 @@ namespace Units
         {
             get => id;
         }
+        
+        private void OnValidate()
+        {
+#if UNITY_EDITOR
+            if (id == "")
+            {
+                id = GUID.Generate().ToString();
+                EditorUtility.SetDirty(this);
+            }
+#endif
+        }
     }
 }
 

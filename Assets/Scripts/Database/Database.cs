@@ -32,6 +32,11 @@ namespace Database
             getObject.Remove(o.ID);
         }
 
+        private void OnValidate()
+        {
+            Regenerate(); //possible performance issues
+        }
+
         public void Regenerate()
         {
 #if UNITY_EDITOR
@@ -51,7 +56,8 @@ namespace Database
                 Debug.Log(sco.name + " added to database.");
             }
             Debug.Log("Added " + getObject.Count + " object(s) to database.");
-#endif
+            EditorUtility.SetDirty(this);
+#endif  
         }
     }
 }

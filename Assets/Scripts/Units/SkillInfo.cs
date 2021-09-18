@@ -2,6 +2,7 @@ using System;
 using Game;
 using UnityEditor;
 using UnityEngine;
+using Game.Skills;
 
 namespace Units
 {
@@ -17,15 +18,6 @@ namespace Units
         [SerializeField] private Sprite sprite;
         [SerializeField] private Skill skillPrefab;
 
-        private void OnValidate()
-        {
-#if UNITY_EDITOR
-            if (id == "")
-            {
-                id = GUID.Generate().ToString();
-                EditorUtility.SetDirty(this);
-            }
-#endif
-        }
+
     }
 }

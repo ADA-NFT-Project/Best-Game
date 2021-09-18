@@ -9,6 +9,7 @@ namespace Game.Entity
         public event Action<int, UnitEntity> OnHit;
         public event Action<UnitEntity> OnDie;
         public event Action<UnitEntity> OnSpawn;
+        public event Action Init;
         
         public static event Action<int, UnitEntity> OnUnitHit;
         public static event Action<UnitEntity> OnUnitDie;
@@ -71,6 +72,11 @@ namespace Game.Entity
         {
             OnSpawn?.Invoke(le.Entity);
             OnUnitSpawn?.Invoke(le.Entity);
+        }
+
+        public void Initialise()
+        {
+            Init?.Invoke();
         }
     }
 }

@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 860fc1c3f10354645b30c0a9f66dc120, type: 3}
+  m_Name: Squarey
+  m_EditorClassIdentifier: 
+  id: d0100386-c6b2-48b0-8d0f-4d10f415c790
+  unitName: Squarey
+  assignSpecies: {fileID: 0}
+  speciesData:
+    id: 111b6a18-cf2f-49d8-a6d0-a74534e6eb7a
+  assignSkills:
+  - {fileID: 11400000, guid: f1416196d03b9044ca3b34020ddf7c41, type: 2}
+  - {fileID: 11400000, guid: c2889db767881d943bea1737dcfeefbc, type: 2}
+  skillsData:
+  - id: d52f40c0ab26d364fad570a9ecdf972e
+  - id: 26805bf9-5442-4507-a963-b8b1e7b0bf72
+  assignParts:
+  - {fileID: 11400000, guid: 54641ceb94469a245aa75fe18c85dfec, type: 2}
+  partsData:
+  - partSlot: 0
+    partID: a99d1497-0744-49f2-8e7a-77bf63cb714c
+  stats:
+    attack: 1
+    defence: -3
+    agility: 8

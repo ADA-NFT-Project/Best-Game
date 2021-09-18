@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da1a37b1a8220964da7f188f4f8b3ed2, type: 3}
-  m_Name: Rice Cook
+  m_Script: {fileID: 11500000, guid: aa299d171cd6f764690d70ea12f305eb, type: 3}
+  m_Name: Cow
   m_EditorClassIdentifier: 
-  id: 26805bf9-5442-4507-a963-b8b1e7b0bf72
-  skillName: Cook
-  description: "Coque\t"
+  id: 111b6a18-cf2f-49d8-a6d0-a74534e6eb7a
+  speciesName: Cow
+  description: Moo!
   rarity: 0
   sprite: {fileID: 0}
-  skillPrefab: {fileID: 0}
+  entityPrefab: {fileID: 7878186754167564942, guid: fafbac9fd55c74a43b87092682e57c10, type: 3}

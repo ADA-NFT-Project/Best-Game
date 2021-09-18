@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 using Game.Entity;
 using UnityEngine;
 
-namespace Game
+namespace Game.Skills
 {
     public enum SkillEvent
     {

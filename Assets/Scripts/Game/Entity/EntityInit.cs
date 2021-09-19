@@ -48,9 +48,13 @@ namespace Game.Entity
             UnitEntity myEntity = Instantiate(speciesInfo.EntityPrefab, location);
             myEntity.name = myEntity.UnitName = unitInfo.UnitName;
             SkillsContainer skillsContainer = new GameObject("Skills").AddComponent<SkillsContainer>();
-            skillsContainer.transform.parent = myEntity.transform;
+            var transform1 = skillsContainer.transform;
+            transform1.parent = myEntity.transform;
+            transform1.localPosition = new Vector3(0,0,0);
             PartsContainer partsContainer = new GameObject("Parts").AddComponent<PartsContainer>();
-            partsContainer.transform.parent = myEntity.transform;
+            var transform2 = partsContainer.transform;
+            transform2.parent = myEntity.transform;
+            transform2.localPosition = new Vector3(0,0,0);
 
             Dictionary<UnitPart, bool> getPartPopulated = new Dictionary<UnitPart, bool>();
             foreach (UnitPart e in Enum.GetValues(typeof(UnitPart)))
@@ -80,6 +84,7 @@ namespace Game.Entity
                 getPartPopulated[partToPopulate] = true;
                 Transform myPartContainer = new GameObject(p.PartType.ToString()).transform;
                 myPartContainer.parent = partsContainer.transform;
+                myPartContainer.localPosition = new Vector3(0, 0, 0);
                 BodyPart myPart = Instantiate(p.PartPrefab,myPartContainer);
             }
             

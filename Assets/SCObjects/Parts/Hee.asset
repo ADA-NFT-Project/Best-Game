@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Hee
   m_EditorClassIdentifier: 
   id: a99d1497-0744-49f2-8e7a-77bf63cb714c
-  bodyPart: 0
+  partType: 0
   partName: Bighead
   description: aaaaa
   rarity: 0
   sprite: {fileID: 0}
-  partPrefab: {fileID: 5040201349942063370, guid: a05824a81294a634e860f7bfaf1f3096, type: 3}
+  partPrefab: {fileID: -2031184800424626842, guid: 15e94b2528f610b48be13ee9ef54f882, type: 3}

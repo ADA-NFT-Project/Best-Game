@@ -18,6 +18,6 @@ namespace Units
         [SerializeField] private Sprite sprite;
         [SerializeField] private Skill skillPrefab;
 
-
+        public Skill SkillPrefab => skillPrefab;
     }
 }

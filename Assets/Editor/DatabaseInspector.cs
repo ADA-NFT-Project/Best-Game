@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(Database.Database))]
+[CustomEditor(typeof(Database.ObjectDatabase))]
 public class DatabaseInspector : Editor
 {
     public override void OnInspectorGUI()
     {
         DrawDefaultInspector();
-        var database = (Database.Database) target;
+        var database = (Database.ObjectDatabase) target;
         if (GUILayout.Button("Regenerate Database"))
         {
             database.Regenerate();

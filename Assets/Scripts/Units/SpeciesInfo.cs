@@ -15,6 +15,6 @@ namespace Units
         [SerializeField] private Sprite sprite;
         [SerializeField] private UnitEntity entityPrefab;
 
-
+        public UnitEntity EntityPrefab => entityPrefab;
     }
 }

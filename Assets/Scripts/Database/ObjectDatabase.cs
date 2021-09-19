@@ -10,7 +10,7 @@ using Object = System.Object;
 namespace Database
 {
     [CreateAssetMenu (fileName = "New Database", menuName = "Database")]
-    public class Database : ScriptableObject
+    public class ObjectDatabase : ScriptableObject
     {
         [SerializeField] private string type;
         [SerializeField] private string path;
@@ -53,9 +53,9 @@ namespace Database
             foreach (var sco in scobjects)
             {
                 Add(sco);
-                Debug.Log(sco.name + " added to database.");
+                //Debug.Log(sco.name + " added to database.");
             }
-            Debug.Log("Added " + getObject.Count + " object(s) to database.");
+            Debug.Log("Added " + getObject.Count + " object(s) to \"" + type + "\" database.");
             EditorUtility.SetDirty(this);
 #endif  
         }

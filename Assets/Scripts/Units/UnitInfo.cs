@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Game.Entity;
 using UnityEditor;
 using UnityEngine;
 
@@ -21,6 +22,17 @@ namespace Units
         [SerializeField] private List<PartsData> partsData;
         [SerializeField] private UnitStats stats;
 
+
+        public string UnitName => unitName;
+
+        public SpeciesData SpeciesData => speciesData;
+
+        public List<SkillData> SkillsData => skillsData;
+
+        public List<PartsData> PartsData => partsData;
+
+        public UnitStats Stats => stats;
+
         private void OnValidate()
         {
             if(assignSpecies != null)
@@ -37,7 +49,7 @@ namespace Units
             foreach (var p in assignParts)
             {
                 if(p != null)
-                    partsData.Add(new PartsData(p.BodyPart, p.ID));
+                    partsData.Add(new PartsData(p.PartType, p.ID));
             }
             
             EditorUtility.SetDirty(this);
@@ -56,16 +68,16 @@ namespace Units
     [System.Serializable]
     public struct PartsData
     {
-        [SerializeField] private UnitPart partSlot;
-        [SerializeField] private string partID;
+        [SerializeField] private UnitPart partSlot; //technically redundant, but useful for reference
+        [SerializeField] private string ID;
 
         public UnitPart PartSlotID => partSlot;
-        public string PartID => partID;
+        public string PartID => ID;
 
         public PartsData(UnitPart _slot, string _ID)
         {
             partSlot = _slot;
-            partID = _ID;
+            ID = _ID;
         }
     }
 

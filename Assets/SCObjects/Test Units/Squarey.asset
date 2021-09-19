@@ -27,7 +27,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 54641ceb94469a245aa75fe18c85dfec, type: 2}
   partsData:
   - partSlot: 0
-    partID: a99d1497-0744-49f2-8e7a-77bf63cb714c
+    ID: a99d1497-0744-49f2-8e7a-77bf63cb714c
   stats:
     attack: 1
     defence: -3

@@ -12,7 +12,7 @@ namespace Units
     [CreateAssetMenu(menuName = "Body Part", fileName = "New Part")]
     public class PartsInfo : IdScobject
     {
-        [SerializeField] private UnitPart bodyPart;
+        [SerializeField] private UnitPart partType;
         [SerializeField] private string partName;
         [TextArea(2,8)]
         [SerializeField] private string description;
@@ -22,6 +22,8 @@ namespace Units
         [SerializeField] private Sprite sprite;
         [SerializeField] private BodyPart partPrefab;
 
-        public UnitPart BodyPart => bodyPart;
+        public UnitPart PartType => partType;
+
+        public BodyPart PartPrefab => partPrefab;
     }
 }

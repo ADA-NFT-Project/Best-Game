@@ -1,4 +1,5 @@
 using System;
+using Game.Skills;
 using Units;
 using UnityEngine;
 
@@ -24,6 +25,20 @@ namespace Game.Entity
         private UnitInfo info;
         
         public Animator animator;
+        private string unitName;
+        private string description; //TO BUILD PROCEDURALLY
+
+        public string UnitName
+        {
+            get => unitName;
+            set => unitName = value;
+        }
+
+        public string Description
+        {
+            get => description;
+            set => description = value;
+        }
 
         public SkillUser Skills => skills;
         public LivingEntity Life => life;
@@ -72,6 +87,11 @@ namespace Game.Entity
         {
             OnSpawn?.Invoke(le.Entity);
             OnUnitSpawn?.Invoke(le.Entity);
+        }
+
+        public void AddSkill(Skill s)
+        {
+            skills.AddSkill(s);
         }
 
         public void Initialise()

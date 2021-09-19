@@ -9,7 +9,7 @@ namespace Game.Entity
     [RequireComponent(typeof(UnitEntity))]
     public class SkillUser : MonoBehaviour
     {
-        [SerializeField] private List<Skill> skills;
+        private List<Skill> skills;
         private UnitEntity entity;
 
         private AnimatorOverrideController animationOverride;
@@ -22,6 +22,7 @@ namespace Game.Entity
 
         private void Awake()
         {
+            skills = new List<Skill>();
             entity = GetComponent<UnitEntity>();
         }
 
@@ -43,10 +44,6 @@ namespace Game.Entity
         {
             animationOverride = new AnimatorOverrideController(Entity.animator.runtimeAnimatorController);
             Entity.animator.runtimeAnimatorController = animationOverride;
-            foreach (Skill s in skills)
-            {
-                s.user = this;
-            }
         }
 
         private void UseOnSpawnSkills(UnitEntity le)
@@ -79,7 +76,7 @@ namespace Game.Entity
             skills[order].UseSkillEventAction(SkillEvent.Activate);
         }
 
-        public void SkillEffect(string input)
+        public void SkillEffect(string input)//used in animation events
         {
             string[] skillEffect = input.Split('_');
             string skill = skillEffect[0];
@@ -96,6 +93,12 @@ namespace Game.Entity
         {
             animationOverride["Skill"] = clip;
             Entity.animator.Play("Skill");
+        }
+
+        public void AddSkill(Skill s)
+        {
+            skills.Add(s);
+            s.user = this;
         }
     }
 }

@@ -1,5 +1,7 @@
 using System;
 using Game.Skills;
+using Spine;
+using Spine.Unity;
 using Units;
 using UnityEngine;
 
@@ -24,7 +26,7 @@ namespace Game.Entity
 
         private UnitInfo info;
         
-        public Animator animator;
+        public SkeletonAnimation animator;
         private string unitName;
         private string description; //TO BUILD PROCEDURALLY
 
@@ -53,8 +55,9 @@ namespace Game.Entity
         {
             skills = GetComponent<SkillUser>();
             life = GetComponent<LivingEntity>();
-            animator = GetComponent<Animator>();
+            animator = GetComponent<SkeletonAnimation>();
             sprite = GetComponentInChildren<SpriteRenderer>();
+            animator = GetComponentInChildren<SkeletonAnimation>();
         }
 
         private void OnEnable()

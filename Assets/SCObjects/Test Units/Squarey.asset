@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: d0100386-c6b2-48b0-8d0f-4d10f415c790
   unitName: Squarey
-  assignSpecies: {fileID: 0}
+  assignSpecies: {fileID: 11400000, guid: df1116fb170c1964c883015350fa24f0, type: 2}
   speciesData:
     id: 111b6a18-cf2f-49d8-a6d0-a74534e6eb7a
   assignSkills:

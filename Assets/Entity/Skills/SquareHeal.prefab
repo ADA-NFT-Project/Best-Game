@@ -46,6 +46,6 @@ MonoBehaviour:
   skillName: HealSpell
   skillActions:
   - skillEvent: 1
-    action: {fileID: 7400000, guid: cf485d01ef6149b41a32c0930fedbb16, type: 2}
+    action: {fileID: 11400000, guid: abea4790b61cd194eab5977fc16e095d, type: 2}
   user: {fileID: 0}
   toHeal: 3

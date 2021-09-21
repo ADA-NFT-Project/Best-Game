@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa299d171cd6f764690d70ea12f305eb, type: 3}
-  m_Name: Cow
+  m_Name: Girl
   m_EditorClassIdentifier: 
   id: 111b6a18-cf2f-49d8-a6d0-a74534e6eb7a
-  speciesName: Cow
+  speciesName: Girl
   description: Moo!
   rarity: 0
   sprite: {fileID: 0}
-  entityPrefab: {fileID: 7878186754167564942, guid: fafbac9fd55c74a43b87092682e57c10, type: 3}
+  entityPrefab: {fileID: 5797705976715867200, guid: 7edad1f3eb8ed9b42994af2cd684c743, type: 3}

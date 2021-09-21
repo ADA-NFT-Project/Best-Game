@@ -644,6 +644,10 @@
 		}
 	}
 ],
+	"events": {
+		"0" : {},
+		"1" : {}
+	},
 "animations": {
 	"blink": {
 		"slots": {
@@ -666,7 +670,11 @@
 					{ "time": 0.3333 }
 				]
 			}
-		}
+		},
+		"events": [
+			{ "time": 0.1, "name": "0" },
+			{ "time": 0.3, "name": "1"}
+		]
 	},
 	"main": {
 		"bones": {

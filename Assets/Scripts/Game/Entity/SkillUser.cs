@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using Game;
 using UnityEngine;
 using Game.Skills;
+using Spine.Unity;
 
 namespace Game.Entity
 {
     [RequireComponent(typeof(UnitEntity))]
     public class SkillUser : MonoBehaviour
     {
+        private const int ANIMATOR_SKILL_TRACK = 1;
+        
         private List<Skill> skills;
         private UnitEntity entity;
-
-        private AnimatorOverrideController animationOverride;
 
         public UnitEntity Entity
         {
@@ -40,17 +41,11 @@ namespace Game.Entity
             Entity.OnDie -= UseOnDieSkills;
         }
 
-        private void Start()
-        {
-            animationOverride = new AnimatorOverrideController(Entity.animator.runtimeAnimatorController);
-            Entity.animator.runtimeAnimatorController = animationOverride;
-        }
-
         private void UseOnSpawnSkills(UnitEntity le)
         {
             foreach (Skill s in skills)
             {
-                s.UseSkillEventAction(SkillEvent.Spawn);
+                s.UseSkillEventAction(SkillTriggerEvent.Spawn);
             }
         }
 
@@ -59,7 +54,7 @@ namespace Game.Entity
             if (d <= 0) return;
             foreach (Skill s in skills)
             {
-                s.UseSkillEventAction(SkillEvent.Gethit);
+                s.UseSkillEventAction(SkillTriggerEvent.Gethit);
             }
         }
 
@@ -67,32 +62,18 @@ namespace Game.Entity
         {
             foreach (Skill s in skills)
             {
-                s.UseSkillEventAction(SkillEvent.Die);
+                s.UseSkillEventAction(SkillTriggerEvent.Die);
             }
         }
 
         public void UseSkill(int order)
         {
-            skills[order].UseSkillEventAction(SkillEvent.Activate);
+            skills[order].UseSkillEventAction(SkillTriggerEvent.Activate);
         }
 
-        public void SkillEffect(string input)//used in animation events
+        public void StartSkillAnimation(AnimationReferenceAsset clip)
         {
-            string[] skillEffect = input.Split('_');
-            string skill = skillEffect[0];
-            int effect = Int32.Parse(skillEffect[1]);
-
-            foreach (Skill s in skills)
-            {
-                if(String.Equals(s.SkillName, skill, StringComparison.CurrentCultureIgnoreCase))
-                    s.ActivateSkillEffect(effect);
-            }
-        }
-
-        public void StartSkillAnimation(AnimationClip clip)
-        {
-            animationOverride["Skill"] = clip;
-            Entity.animator.Play("Skill");
+            Entity.animator.AnimationState.SetAnimation(ANIMATOR_SKILL_TRACK, clip, false);
         }
 
         public void AddSkill(Skill s)

@@ -27,11 +27,11 @@
  * THE SPINE RUNTIMES, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  *****************************************************************************/
 
-using Spine;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using Spine;
 
 namespace Spine.Unity {
 	/// <summary>Loads and stores a Spine atlas and list of materials.</summary>
@@ -71,9 +71,8 @@ namespace Spine.Unity {
 			string[] atlasLines = atlasString.Split('\n');
 			var pages = new List<string>();
 			for (int i = 0; i < atlasLines.Length - 1; i++) {
-				string line = atlasLines[i].Trim();
-				if (line.EndsWith(".png"))
-					pages.Add(line.Replace(".png", ""));
+				if (atlasLines[i].Trim().Length == 0)
+					pages.Add(atlasLines[i + 1].Trim().Replace(".png", ""));
 			}
 
 			// Populate Materials[] by matching texture names with page names.
@@ -124,14 +123,14 @@ namespace Spine.Unity {
 		}
 
 		/// <returns>The atlas or null if it could not be loaded.</returns>
-		public override Atlas GetAtlas (bool onlyMetaData = false) {
+		public override Atlas GetAtlas () {
 			if (atlasFile == null) {
 				Debug.LogError("Atlas file not set for atlas asset: " + name, this);
 				Clear();
 				return null;
 			}
 
-			if (!onlyMetaData && (materials == null || materials.Length == 0)) {
+			if (materials == null || materials.Length == 0) {
 				Debug.LogError("Materials not set for atlas asset: " + name, this);
 				Clear();
 				return null;
@@ -140,12 +139,7 @@ namespace Spine.Unity {
 			if (atlas != null) return atlas;
 
 			try {
-				TextureLoader loader;
-				if (!onlyMetaData)
-					loader = new MaterialsTextureLoader(this);
-				else
-					loader = new NoOpTextureLoader();
-				atlas = new Atlas(new StringReader(atlasFile.text), "", loader);
+				atlas = new Atlas(new StringReader(atlasFile.text), "", new MaterialsTextureLoader(this));
 				atlas.FlipV();
 				return atlas;
 			} catch (Exception ex) {
@@ -184,16 +178,16 @@ namespace Spine.Unity {
 				u2 = region.u2;
 				v2 = region.v2;
 
-				if (region.degrees == 90) {
-					uvs[0] = new Vector2(u2, v2);
-					uvs[1] = new Vector2(u, v2);
-					uvs[2] = new Vector2(u, v);
-					uvs[3] = new Vector2(u2, v);
-				} else {
+				if (!region.rotate) {
 					uvs[0] = new Vector2(u, v2);
 					uvs[1] = new Vector2(u, v);
 					uvs[2] = new Vector2(u2, v);
 					uvs[3] = new Vector2(u2, v2);
+				} else {
+					uvs[0] = new Vector2(u2, v2);
+					uvs[1] = new Vector2(u, v2);
+					uvs[2] = new Vector2(u, v);
+					uvs[3] = new Vector2(u2, v);
 				}
 
 				mesh.triangles = new int[0];
@@ -211,11 +205,6 @@ namespace Spine.Unity {
 
 			return mesh;
 		}
-	}
-
-	public class NoOpTextureLoader : TextureLoader {
-		public void Load (AtlasPage page, string path) { }
-		public void Unload (object texture) { }
 	}
 
 	public class MaterialsTextureLoader : TextureLoader {
